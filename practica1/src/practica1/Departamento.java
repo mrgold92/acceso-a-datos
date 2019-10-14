@@ -2,9 +2,14 @@ package practica1;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author David S. 2ºDAM
+ *
+ */
 public class Departamento implements Serializable {
 
-	
+
 	private static final long serialVersionUID = 1L;
 	private int numeroDepartamento;
 	private String nombre;
