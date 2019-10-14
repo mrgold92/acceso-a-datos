@@ -1,0 +1,5 @@
+1569010085364	Convert local variable 'stream' to field
+1569044301406	Inline local variable 'ois'
+1569044744031	Extract local variable 'objectInputStream'
+1569045170564	Inline local variable 'ois3'
+1569102846265	Extract local variable 'objectInputStream'

@@ -1,0 +1,78 @@
+package practica1;
+
+import java.io.File;
+import java.io.Serializable;
+import java.util.Scanner;
+
+public class Main implements Serializable{
+
+	public static void main(String[] args){
+
+		Departamento[] departamentos = new Departamento[5];
+
+		Operaciones op = new Operaciones();
+
+		Scanner teclado = new Scanner(System.in);
+		File ruta = new File(System.getProperty("user.home") + File.separator + "configuracion.props");
+
+		if (!ruta.exists()) {
+			op.crearLeerYmostrarArhivo(departamentos);
+		} else {
+			System.out.println("¿Quieres modificar algún departamento? 1.Sí 2.No");
+			int opc = teclado.nextInt();
+			String nombre = "";
+			String localidad = "";
+			int departamento = 0;
+			teclado.nextLine();
+			if (opc == 1) {
+				System.out.println("Dime el número de departamento");
+				departamento = teclado.nextInt();
+				boolean c = op.comprobarDepartamento(departamento);
+				System.out.println(departamento);
+				if (!c) {
+					System.out.println("El departamento no existe");
+				} else {
+					teclado.nextLine();
+					System.out.println("Dime el nuevo nombre del departamento");
+					nombre = teclado.next();
+					System.out.println("Dime la localidad del departamento");
+					localidad = teclado.next();
+					op.modificarArchivo(departamento, nombre, localidad);
+					op.mostrarArchivo();
+
+				}
+
+			} else {
+				System.out.println("¿Quieres eliminar algún departamento? 1.Sí 2.No");
+				int op2 = teclado.nextInt();
+				if (op2 == 1) {
+					System.out.println("Dime el número de departamento");
+					departamento = teclado.nextInt();
+					boolean c2 = true;
+
+					if (!c2) {
+						System.out.println("El departamento no existe");
+					} else {
+						op.eliminarDepartamento(departamento);
+						
+						
+					}
+					try {
+						Thread.sleep(1000);
+						op.mostrarArchivo();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+
+				}
+				System.out.println("Hasta la próxima");
+			}
+		}
+		
+		
+
+	}
+
+}

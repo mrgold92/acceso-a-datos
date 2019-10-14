@@ -1,0 +1,9 @@
+package practica1;
+
+public class Departamento {
+	
+	private int numeroDepartamento;
+	private String nombre;
+	private String localidad;
+
+}
